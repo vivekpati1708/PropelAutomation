@@ -2,11 +2,9 @@ package propel.maintests.com;
 
 import org.testng.annotations.Test;
 
-public class DashboardTest {
+public class SearchTest {
   @Test
   public void f() {
-	  System.out.println("Vivek");
-	  System.out.println("Vivek");
+	  System.out.println("Vivek pati");
   }
-  
 }
