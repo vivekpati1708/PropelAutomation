@@ -2,9 +2,13 @@ package propel.maintests.com;
 
 import org.testng.annotations.Test;
 
-public class Logintest {
+import propel.utility.com.Propelbaseclass;
+
+public class Logintest extends Propelbaseclass {
   @Test
   public void logintest() {
+	  
+	  
 	
   
   }

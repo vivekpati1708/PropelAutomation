@@ -1,4 +1,4 @@
-package prople.utility.com;
+package propel.utility.com;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -6,8 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.Test;
 /*Base class to include or initial methods.
- * vivek as champ 
- * */
+ */
 public class Propelbaseclass 
 {
 	WebDriver driver;
@@ -31,6 +30,9 @@ public class Propelbaseclass
 		default:
 			break;
 		}
+		
+		driver.manage().window().maximize();
+		driver.get(url);
 	}	
 	// Call this method to quit browser. 	
 	void quitBrowser(){
