@@ -31,8 +31,13 @@ public class Propelbaseclass
 		default:
 			break;
 		}
-		
+	}	
+	// Call this method to quit browser. 	
+	void quitBrowser(){
 		
 	}
 	
-}
+		
+	}
+	
+
