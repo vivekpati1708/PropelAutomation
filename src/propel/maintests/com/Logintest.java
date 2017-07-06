@@ -8,8 +8,6 @@ public class Logintest extends Propelbaseclass {
   @Test
   public void logintest() {
 	  
-	  
-	
-  
+	   
   }
 }
