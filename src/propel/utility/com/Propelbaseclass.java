@@ -20,11 +20,11 @@ public class Propelbaseclass
 			driver=new FirefoxDriver();
 			break;
 		case "CHROME":
-			System.setProperty("webdriver.chrome.driver", "C:\\Users\\maraka\\git\\PropelAutomation\\Drivers\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "..\\PropelAutomation\\Drivers\\chromedriver.exe");
 			driver = new ChromeDriver();
 			break;	
 		case "IE":
-			System.setProperty("webdriver.ie.driver","C:\\Users\\maraka\\git\\PropelAutomation\\Drivers\\IEDriverServer.exe");
+			System.setProperty("webdriver.ie.driver","..\\PropelAutomation\\Drivers\\IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 			break;	
 		default:
