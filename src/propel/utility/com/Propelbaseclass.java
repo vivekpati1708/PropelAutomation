@@ -11,7 +11,7 @@ public class Propelbaseclass
 {
 	WebDriver driver;
   
-	public void startBrowser(String browserName,String url)
+	public WebDriver startBrowser(String browserName,String url)
 	
 	{
 		switch (browserName.toUpperCase().trim()) 
@@ -20,19 +20,21 @@ public class Propelbaseclass
 			driver=new FirefoxDriver();
 			break;
 		case "CHROME":
-			System.setProperty("webdriver.chrome.driver", "C:\\Users\\maraka\\workspace\\PropelAutomation\\Data\\Driverschromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "C:\\Users\\maraka\\git\\PropelAutomation\\Drivers\\chromedriver.exe");
 			driver = new ChromeDriver();
 			break;	
 		case "IE":
-			System.setProperty("webdriver.ie.driver","C:\\Users\\maraka\\workspace\\PropelAutomation\\Data\\IEDriverServer.exe");
+			System.setProperty("webdriver.ie.driver","C:\\Users\\maraka\\git\\PropelAutomation\\Drivers\\IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 			break;	
 		default:
 			break;
 		}
 		
-		driver.manage().window().maximize();
+		//driver.manage().window().maximize();
 		driver.get(url);
+		
+		return this.driver;
 	}	
 	// Call this method to quit browser. 	
 	void quitBrowser(){
