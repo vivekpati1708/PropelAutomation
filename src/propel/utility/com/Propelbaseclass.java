@@ -4,17 +4,25 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 /*Base class to include or initial methods.
  */
 public class Propelbaseclass 
 {
-	WebDriver driver;
-  
-	public WebDriver startBrowser(String browserName,String url)
-	
+	public static WebDriver driver;
+			
+	@BeforeClass
+	public void startBrowser()
 	{
-		switch (browserName.toUpperCase().trim()) 
+		Reporter.log("Browser Sesstion Stated Successfully");
+		switch (Constant.BROWSER.toUpperCase().trim()) 
 		{
 		case "FIREFOX":
 			driver=new FirefoxDriver();
@@ -30,16 +38,25 @@ public class Propelbaseclass
 		default:
 			break;
 		}
-		
 		//driver.manage().window().maximize();
-		driver.get(url);
-		
-		return this.driver;
+		driver.get(Constant.URL);	
 	}	
-	// Call this method to quit browser. 	
-	void quitBrowser(){
-		
+	// Call this method to quit browser. 
+	
+	@AfterClass
+	public void quitBrowser()
+	{
+		Reporter.log("Browser Sesstion closed successfully");	
+		driver.quit();;
 	}
+	
+	@AfterMethod()
+	void takeScreenshot()
+	{
+		Reporter.log("Screenshot captured for testcase");
+		GenericUtility.captureScreenshot(driver,"name of screenshot");
+	}
+	
 	
 		
 	}
