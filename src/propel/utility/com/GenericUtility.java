@@ -34,32 +34,28 @@ public class GenericUtility {
 	
 // =========================================================================================	
 	public static WebElement isElementPresnt(WebDriver driver,String xpath,int time)
-	{
-	 
-	 
-	WebElement ele = null;
-	 
-	for(int i=0;i<time;i++)
-	{
-	try{
-	ele=driver.findElement(By.xpath(xpath));
-	break;
-	}
-	catch(Exception e)
-	{
-	try 
-	{
-	Thread.sleep(1000);
-	} catch (InterruptedException e1) 
-	{
-		Reporter.log("Waiting for element to appear on DOM");
-	}
-	}
-	 
-	 
-	}
+	{ 
+		WebElement ele = null;
+		for(int i=0;i<time;i++)
+		{
+			try{
+			ele=driver.findElement(By.xpath(xpath));
+			break;
+		}
+		catch(Exception e)
+		{
+			try 
+			{
+				Thread.sleep(1000);
+				
+			} 
+			catch (InterruptedException e1) 
+			{
+				Reporter.log("Waiting for element to appear on DOM");
+			}
+		}		 
+		}
 	return ele;
-	 
 	}
 	 
 }

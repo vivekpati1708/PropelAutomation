@@ -21,8 +21,10 @@ public class Logintest extends Propelbaseclass {
 	  //Thread.sleep(25000);
 	  System.out.println("Test Test");
 	  //login_page.enterLoginInfo();
+	  login_page.enterLoginInfo();
 	  
-	  login_page.logindemo();
+	  login_page.selectTenant();
+	  
   }
   
   

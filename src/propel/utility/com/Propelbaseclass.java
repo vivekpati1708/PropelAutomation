@@ -39,7 +39,8 @@ public class Propelbaseclass
 			break;
 		}
 		//driver.manage().window().maximize();
-		driver.get(Constant.URL);	
+		driver.get(Constant.CID6);	
+		
 	}	
 	// Call this method to quit browser. 
 	
@@ -47,7 +48,7 @@ public class Propelbaseclass
 	public void quitBrowser()
 	{
 		Reporter.log("Browser Sesstion closed successfully");	
-		driver.quit();;
+		//driver.quit();;
 	}
 	
 	@AfterMethod()

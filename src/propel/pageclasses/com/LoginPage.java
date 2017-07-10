@@ -1,10 +1,14 @@
 package propel.pageclasses.com;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import propel.utility.com.GenericUtility;
@@ -13,7 +17,7 @@ public class LoginPage {
   
 	WebDriver driver;
 	
-	 public LoginPage(WebDriver driver)
+	public LoginPage(WebDriver driver)
 	{
 		this.driver=driver;
 		//PageFactory.initElements(driver,this); 
@@ -31,43 +35,33 @@ public class LoginPage {
 	@CacheLookup
 	WebElement btnLogin;
 	
-	@FindBy(name="s")
+	@FindBy(xpath=".//a[@class='jqTransformSelectOpen']")
 	@CacheLookup
-	WebElement tbSerachbox;
+	WebElement openTenantList;
 	
-	@FindBy(id="log1")
+	@FindBy(xpath=".//li/a[contains(text(),'HP-Test')]")
 	@CacheLookup
-	WebElement tbUserID;
+	WebElement selectTenant;
 	
-	@FindBy(id="pwd")
+	@FindBy(xpath=".//*[@id='button']")
 	@CacheLookup
-	WebElement tbPassword1;
-	
-	
+	WebElement enter;
+	 
 	public void enterLoginInfo()
 	{
 		tbusername.sendKeys("vivek.pati@hpe.com");
 		tbpassword.sendKeys("anyone");
 		btnLogin.click();
-		
 	}
 	
-	public void EnterSearch()
+	public void selectTenant()
 	{
-		tbSerachbox.sendKeys("Mouse");
-		//tbSerachbox.submit();
-		
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("SelectedTenantName")));	
+		openTenantList.click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//li/a[contains(text(),'HP-Test')]")));
+		selectTenant.click();
+		enter.click();
 	}
-	
-	public void logindemo()
-	{
-		
-		tbUserID.sendKeys("muralimaraka");
-		tbPassword1.sendKeys("nasa");
-	}
-	
-	
-	
-
-		
+			
 }
