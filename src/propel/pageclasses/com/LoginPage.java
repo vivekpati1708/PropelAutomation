@@ -47,10 +47,10 @@ public class LoginPage {
 	@CacheLookup
 	WebElement enter;
 	 
-	public void enterLoginInfo()
+	public void enterLoginInfo(String name, String password)
 	{
-		tbusername.sendKeys("vivek.pati@hpe.com");
-		tbpassword.sendKeys("anyone");
+		tbusername.sendKeys(name);
+		tbpassword.sendKeys(password);
 		btnLogin.click();
 	}
 	
