@@ -1,7 +1,6 @@
 package propel.utility.com;
 
 import org.testng.Reporter;
-import org.testng.annotations.Test;
 import java.io.File;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -12,6 +11,7 @@ import org.openqa.selenium.WebElement;
 
 public class GenericUtility {
   
+	
 	public static void captureScreenshot(WebDriver driver,String screenshotName)
 	{
 	 

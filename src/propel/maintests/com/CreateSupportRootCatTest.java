@@ -2,22 +2,20 @@ package propel.maintests.com;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import propel.pageclasses.com.*;
 import propel.utility.com.Propelbaseclass;
 
 public class CreateSupportRootCatTest extends Propelbaseclass {
 	
-  @Test(description="Enter Login creadentials",timeOut = 20000,priority=1)
-  public void logintest()
+
+  @Test(description="Enter Login creadentials",timeOut = 20000,priority=1,dataProvider="cred")
+  public void logintest(String name,String password)
   {
-	  System.out.println("Logging into Propel");
-	  LoginPage login_page=PageFactory.initElements(driver,LoginPage.class); //new LoginPage(driver);
-	  //Thread.sleep(25000);
-	  
-	  //login_page.enterLoginInfo();
-	  login_page.enterLoginInfo();
-	  System.out.println("Selecting Tenant");
+	  LoginPage login_page=PageFactory.initElements(driver,LoginPage.class); 
+	  System.out.println("Test Test");
+	  login_page.enterLoginInfo(name,password);
 	  login_page.selectTenant();
   }
   

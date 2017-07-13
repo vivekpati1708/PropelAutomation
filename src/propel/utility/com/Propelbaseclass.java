@@ -10,6 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 /*Base class to include or initial methods.
@@ -58,8 +59,15 @@ public class Propelbaseclass
 		GenericUtility.captureScreenshot(driver,"name of screenshot");
 	}
 	
+	  @DataProvider(name="cred")
+	  public Object[][] loginCred()
+	  {
+		  ExcelUtility cred = new ExcelUtility();
+		  Object[][] dataRow = cred.GetRowValues("LoginData", 2);
+		  return dataRow;
+	  }
+
 	
-		
-	}
+}
 	
 
