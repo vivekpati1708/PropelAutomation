@@ -2,7 +2,6 @@ package propel.utility.com;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -14,6 +13,7 @@ public class ExcelUtility {
 	File xlrSrc;
 	FileInputStream xlsxFis;
 	XSSFWorkbook wb ;
+	XSSFSheet dataSheet;
 	/**
 	  * Excel method the read the data from the excel. 
 	  * 
@@ -21,7 +21,7 @@ public class ExcelUtility {
 	public ExcelUtility()
 	{
 		try {
-			xlrSrc = new File("C:\\Users\\pativ\\Desktop\\PropelData.xlsx");
+			xlrSrc = new File("..\\PropelAutomation\\DataFiles\\PropelData.xlsx");
 			xlsxFis = new FileInputStream(xlrSrc);
 			//For xlx file we will be using the class. 
 			//HSSFWorkbook wb1 = new HSSFWorkbook(xlxFis);
@@ -32,32 +32,77 @@ public class ExcelUtility {
 			System.out.println(e.getMessage());
 		}	
 	}
-	
-	public void GetData(String sheet, int row, int col) 
+	/**
+	 * 
+	 * @param sheet
+	 * @param row
+	 * @param col
+	 * @return
+	 */
+	public String GetCellValue(int row, int col)
 	{
-		try {
-			XSSFSheet loginData =wb.getSheet("LoginData"); // To get sheet as per the sheet name. 
-			//wb.getSheetAt(0);// Fetch you the 1st sheet as the index start from zero. 
-			
-			String userName = loginData.getRow(1).getCell(0).getStringCellValue();
-			System.out.println("Line 2");
-			double passworkd = loginData.getRow(1).getCell(1).getNumericCellValue();
-		
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-		finally 
+		String cellValue = dataSheet.getRow(row-1).getCell(col).getStringCellValue();
+		return cellValue;
+	}
+/**
+ * GetCellValue : To fetch the value of a particular Cell. 
+ * @param sheet = Name of the sheet in the workbook, String Type
+ * @param row = Row number in the sheet, Integer Type.
+ * @param col = Name of the column, String type
+ * @return object with the cell value that is fetched by row number and column name
+ */
+	public Object[][] GetCellValue(String sheet, int row, String col) 
+	{
+		String[][] cellValue =new String[1][1];
+		dataSheet = wb.getSheet(sheet);
+		int colNum=0;
+		for(int i=0;i<dataSheet.getRow(0).getLastCellNum();i++)
 		{
-			try {
-				wb.close();
-			} catch (IOException e) {
-				
-				System.out.println(e.getMessage());
-			}
-		}		
+			String x = dataSheet.getRow(0).getCell(i).getStringCellValue();
+			if(x.compareTo(col)==0)
+				colNum=i;
+		}
+		cellValue[0][0]=GetCellValue(row, colNum);		
+		return cellValue;
 	}
 	
+	/**
+	 * 
+	 * @param sheet
+	 * @param row
+	 * @return
+	 */
+	public Object[][] GetRowValues(String sheet, int row)
+	{
+		Object[][] dataRow = null;
+		dataSheet = wb.getSheet(sheet);
+		dataRow = new String [1][dataSheet.getRow(row-1).getLastCellNum()];
+		for(int i =0; i < dataSheet.getRow(row-1).getLastCellNum();i++)
+		{
+			dataRow[0][i]=GetCellValue(row, i);;
+		}
+		return dataRow;		
+	}
 	
+	/**
+	 * 
+	 * @param sheet
+	 * @return
+	 */
+	public Object[][] getAllRows(String sheet)
+	{
+		Object[][] dataSet = null;
+		dataSheet = wb.getSheet(sheet);
+		int rowsCount = dataSheet.getLastRowNum()+1;
+		int colsCount = dataSheet.getRow(0).getLastCellNum();
+		dataSet = new Object[rowsCount][colsCount];
+		for(int i = 0; i<rowsCount;i++)
+			for(int j=0;j<colsCount;j++)
+			{ 
+				dataSet[i][j]=GetCellValue(i+1,j);
+			}
+			
+		return dataSet;
+	}
 
 }
