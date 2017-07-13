@@ -48,7 +48,7 @@ public class Propelbaseclass
 	public void quitBrowser()
 	{
 		Reporter.log("Browser Sesstion closed successfully");	
-		//driver.quit();;
+		driver.quit();;
 	}
 	
 	@AfterMethod()

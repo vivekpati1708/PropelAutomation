@@ -1,6 +1,5 @@
 package propel.pageclasses.com;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -9,25 +8,25 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-public class DashboardPage {
+public class ServiceCatalogAdminPage {
 WebDriver driver;
 	
-	public DashboardPage(WebDriver driver)
+	public ServiceCatalogAdminPage(WebDriver driver)
 	{
 		this.driver=driver;
 		//PageFactory.initElements(driver,this); 
 	}
 	
-	@FindBy(id="Service2") 
+	@FindBy(id="create_root_category") 
 	@CacheLookup
-	WebElement tabAdmin;
+	WebElement spanCreateRootCat;
 	
 	
-	public void clickAdmin()
+	public void clickRootCat()
 	{
 		WebDriverWait wait = new WebDriverWait(driver, 20);
-		wait.until(ExpectedConditions.visibilityOf(tabAdmin));	
-		tabAdmin.click();
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("linkServiceCatalogAdministration")));
+		wait.until(ExpectedConditions.visibilityOf(spanCreateRootCat));
+		spanCreateRootCat.click();
 	}
 }
-

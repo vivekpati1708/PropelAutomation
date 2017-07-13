@@ -59,7 +59,7 @@ public class LoginPage {
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("SelectedTenantName")));	
 		openTenantList.click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//li/a[contains(text(),'HP-Test')]")));
+		wait.until(ExpectedConditions.visibilityOf(selectTenant));
 		selectTenant.click();
 		enter.click();
 	}

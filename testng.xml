@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="example suite 1" verbose="1" >
+  <test name="Login Test" >
+    <classes>
+    <class name="propel.maintests.com.Logintest"/>
+    </classes>
+ </test>
+ <test name="Create Service Catalog root category Test" >
+    <classes>
+      <class name="propel.maintests.com.CreateRootCatTest"/>
+    </classes>
+ </test>
+ 
+ <test name="Create Support Catalog root category Test" >
+    <classes>
+      <class name="propel.maintests.com.CreateSupportRootCatTest"/>
+    </classes>
+ </test>
+ 
+</suite>
